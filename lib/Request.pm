@@ -34,3 +34,20 @@ sub dispatch {
 __PACKAGE__->meta->make_immutable;
 
 1;
+
+__END__
+
+=head NAME
+
+Norma::Request - Map and dispatch web requests under Norma
+
+=head1 SYNOPSIS
+
+my $norma = Norma::Request->new(
+	url_path => '/recipes/23/comments/309'
+	application_namespace => 'My::App',
+);
+
+$norma->dispatch;
+
+
