@@ -63,7 +63,7 @@ role {
 			method "_build_$relationship->{name}" => sub { 
 				my ($self) = @_;
 				$relationship->{class}->collect( 
-					where_clause => "$foreign_key = " . $self->$primary_key_name
+					where => "$foreign_key = " . $self->$primary_key_name
 				);
 			};
 
