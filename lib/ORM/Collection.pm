@@ -102,11 +102,17 @@ Norma::ORM::Collection - Queries and results with metadata from Norma::ORM::Mapp
 
 =head1 METHODS
 
+=over
+
 =item new(where => {...} order => $column_name, ...)
 
 Queries the database and returns a collection which contains an array of instantiated objects, along with other metadata.  We'll take the following parameters:
 
-=over parameters
+=back
+
+=head2 parameters
+
+=over
 
 =item where
 
@@ -149,6 +155,8 @@ Return items starting at this offset
 
 =head1 METHODS
 
+=over
+
 =item items
 
 Array of objects where each one is an instance of the given $class
@@ -165,4 +173,4 @@ The actual SQL query that was run
 
 The name of the class of the objects returned via items
 
-
+=back

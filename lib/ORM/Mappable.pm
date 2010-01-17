@@ -284,6 +284,8 @@ Norma::ORM::Mappable - A Moose role to map database tables to objects
 
 =head1 ROLE PARAMETERS
 
+=over
+
 =item dbh => $dbh
 
 A database handle from DBI->connect
@@ -317,7 +319,11 @@ An arrayref of hashrefs, each hashref specifying a name, class, and nature.  The
 
 Objects and collections loaded through these relationships will be loaded lazily.
 
+=back
+
 =head1 METHODS PROVIDED THROUGH THIS ROLE
+
+=over
 
 =item new(...)
 
@@ -339,3 +345,4 @@ Delete from the database the row that corresponds to this object.
 
 Class method to return a collection of objects.  See Norma::ORM::Collection for details.
 
+=back
