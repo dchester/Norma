@@ -28,20 +28,6 @@ perldoc command.
 
     perldoc Norma
 
-You can also look for information at:
-
-    RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Norma
-
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Norma
-
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Norma
-
-    Search CPAN
-        http://search.cpan.org/dist/Norma/
-
 
 LICENSE AND COPYRIGHT
 
