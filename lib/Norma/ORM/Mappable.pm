@@ -3,7 +3,7 @@ package Norma::ORM::Mappable;
 use MooseX::Role::Parameterized;
 use Lingua::EN::Inflect::Number qw(to_S to_PL);
 
-use Norma::ORM::Meta::Display::Defaults;
+#use Norma::ORM::Meta::Display::Defaults;
 use Norma::ORM::Collection;
 
 use Norma::DB;
@@ -43,7 +43,7 @@ role {
 		has $column->{COLUMN_NAME} => (
 			is => 'rw',
 			required => $column->{_NORMA_REQUIRED},
-			traits => [qw(AttributeDisplayDefaults)],
+			#traits => [qw(AttributeDisplayDefaults)],
 		);
 	}
 
