@@ -3,7 +3,28 @@ use strict;
 use Test::More;
 use Data::Dumper;
 
+<<<<<<< HEAD
 our $db;
+=======
+use Norma::ORM::Test::DB;
+my $db = Norma::ORM::Test::DB->new;
+
+$db->initialize;
+my $dbh = $db->dbh;
+
+package Norma::ORM::Test::Recipe;
+
+use Moose;
+use Moose::Util::TypeConstraints;
+
+with 'Norma::ORM::Mappable' => {
+	dbh => $dbh,
+	table_name => 'recipes',
+};
+
+subtype RecipeTitle => as 'Str' => where { _validate_title($_) }    => message { "Titles must contain whitespace" };
+subtype MySQLDate   => as 'Str' => where { m/\d{4}\-\d{2}\-\d{2}/ } => message { "Date's should look like YYYY-MM-DD" };
+>>>>>>> 251bc2db3de714ce571130743f758811e51f7ecf
 
 BEGIN {
 	use Norma::ORM::Test::DB;
@@ -124,19 +145,31 @@ $recipes = Norma::ORM::Test::Recipe->collect(
 	where => 'id = 1'
 );
 
+<<<<<<< HEAD
 like($recipes->query, qr/where id = 1 limit 0, 50/, "scalar where is untouched");
+=======
+is ($recipes->query, "select SQL_CALC_FOUND_ROWS recipes.* from recipes where id = 1 limit 0, 50", "scalar where is untouched");
+>>>>>>> 251bc2db3de714ce571130743f758811e51f7ecf
 
 $recipes = Norma::ORM::Test::Recipe->collect(
 	where => [ { id => 1, title => "Eggs" }, "5 between 1 and 10" ]
 );
 
+<<<<<<< HEAD
 like($recipes->query, qr/where 5 between 1 and 10 and id = '1' and title = 'Eggs' limit 0, 50/, "complicated where clause works");
+=======
+is ($recipes->query, "select SQL_CALC_FOUND_ROWS recipes.* from recipes where 5 between 1 and 10 and id = '1' and title = 'Eggs' limit 0, 50", "complicated where clause works");
+>>>>>>> 251bc2db3de714ce571130743f758811e51f7ecf
 
 $recipes = Norma::ORM::Test::Recipe->collect(
 	where => { 'id >' => 0, 'title like' => 'Eggs%' }
 );
 
+<<<<<<< HEAD
 like($recipes->query, qr/where id > '0' and title like 'Eggs%' limit 0, 50/, "complicated where clause works with inline operands");
+=======
+is ($recipes->query, "select SQL_CALC_FOUND_ROWS recipes.* from recipes where id > '0' and title like 'Eggs%' limit 0, 50", "complicated where clause works with inline operands");
+>>>>>>> 251bc2db3de714ce571130743f758811e51f7ecf
 
 done_testing;
 
