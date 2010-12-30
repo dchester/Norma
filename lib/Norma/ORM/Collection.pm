@@ -28,13 +28,6 @@ sub BUILD {
 		push @join_clauses, "$table on $association";
 	}
 
-	my @join_clauses;
-	my %joins = @{ $args->{join} || [] };
-
-	while (my ($table, $association) = each %joins) {
-		push @join_clauses, "$table on $association";
-	}
-
 	my $query_clauses = {};
 	$query_clauses->{join} = join ' join ', $table->{name}, @join_clauses;
 
@@ -50,19 +43,10 @@ sub BUILD {
 	my $limit_count = $args->{limit_count} || $class->_defaults->{limit_count} || 50;
 	$query_clauses->{limit} = "limit $limit_offset, $limit_count";
 
-<<<<<<< HEAD
 	my $selection = $class->_table->select(
 		table_name => $table->{name},
 		%$query_clauses
 	);
-=======
-	$self->{query} = join ' ', grep { $_ }
-		qq{select SQL_CALC_FOUND_ROWS $table->{name}.* from},
-		$query_clauses->{join},
-		$query_clauses->{where},
-		$query_clauses->{order},
-		$query_clauses->{limit};
->>>>>>> 251bc2db3de714ce571130743f758811e51f7ecf
 
 	$self->{total_count} = $selection->{total_count};
 	$self->{query} = $selection->{query};

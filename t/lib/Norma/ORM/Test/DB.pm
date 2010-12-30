@@ -5,7 +5,6 @@ use Test::More;
 use Data::Dumper;
 
 use DBI;
-<<<<<<< HEAD
 
 our $dbh;
 my $primary_key_column_def;
@@ -35,13 +34,6 @@ sub DESTROY {
 	if ($self->{db_driver} eq 'sqlite') {
 		#unlink $self->{sqlite_db_filename};
 	}
-=======
-our $dbh = DBI->connect("dbi:mysql:database=unit_testing", 'tester', 'tester', { RaiseError => 1 });
-
-sub new {
-	my $class = shift;
-	return bless {}, $class;
->>>>>>> 251bc2db3de714ce571130743f758811e51f7ecf
 }
 
 sub dbh { $dbh };
@@ -51,7 +43,6 @@ sub initialize {
 	$dbh->do("drop table if exists recipes");
 	$dbh->do("drop table if exists recipe_comments");
 	$dbh->do("drop table if exists recipe_categories");
-<<<<<<< HEAD
 	$dbh->do("drop table if exists recipe_tags");
 	$dbh->do("drop table if exists entity_likes");
 	$dbh->do("drop table if exists recipe_entity_likes_map");
@@ -59,12 +50,6 @@ sub initialize {
 	$dbh->do(<<EOT);
 	CREATE TABLE `recipes` (
 	  `id` $primary_key_column_def,
-=======
-
-	$dbh->do(<<EOT);
-	CREATE TABLE `recipes` (
-	  `id` int(11) NOT NULL auto_increment,
->>>>>>> 251bc2db3de714ce571130743f758811e51f7ecf
 	  `contributor_person_id` int(11) default NULL,
 	  `added_date` date NOT NULL,
 	  `title` varchar(255) NOT NULL,
@@ -72,7 +57,6 @@ sub initialize {
 	  `ingredients` text,
 	  `instructions` text,
 	  `contributor_name` varchar(255) default NULL,
-<<<<<<< HEAD
 	  `category_id` int(11)
 	) 
 EOT
@@ -115,34 +99,5 @@ EOT
 EOT
 }
 
-=======
-	  `category_id` int(11),
-	  PRIMARY KEY  (`id`),
-	  FULLTEXT KEY `title` (`title`,`description`,`ingredients`,`instructions`,`contributor_name`)
-	) ENGINE=MyISAM CHARSET=utf8	
-EOT
-
-	$dbh->do(<<EOT);
-	 CREATE TABLE `recipe_comments` (
-	  `id` int(11) NOT NULL auto_increment,
-	  `recipe_id` int(11) default NULL,
-	  `person_id` int(11) default NULL,
-	  `date_time` datetime default NULL,
-	  `text` text,
-	  PRIMARY KEY  (`id`)
-	) ENGINE=MyISAM DEFAULT CHARSET=utf8 
-EOT
-
-	$dbh->do(<<EOT);
-	 CREATE TABLE `recipe_categories` (
-	  `id` int(11) NOT NULL auto_increment,
-	  `name` varchar(255) NOT NULL,
-	  PRIMARY KEY  (`id`),
-	  UNIQUE KEY `name` (`name`)
-	) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8
-EOT
-
-}
->>>>>>> 251bc2db3de714ce571130743f758811e51f7ecf
 
 1;

@@ -1,5 +1,4 @@
 use strict;
-<<<<<<< HEAD
 
 use Test::More;
 use Data::Dumper;
@@ -15,42 +14,6 @@ BEGIN {
 my $dbh = $db->dbh;
 
 use Norma::ORM::Test::Recipe;
-=======
-use Test::More;
-use Data::Dumper;
-
-use Norma::ORM::Test::DB;
-my $db = Norma::ORM::Test::DB->new;
-
-$db->initialize;
-my $dbh = $db->dbh;
-
-package Norma::ORM::Test::Recipe;
-
-use Moose;
-use Moose::Util::TypeConstraints;
-
-with 'Norma::ORM::Mappable' => {
-	dbh => $dbh,
-	table_name => 'recipes'
-};
-
-1;
-
-package Norma::ORM::Test::Recipe::Comment;
-
-use Moose;
-use Moose::Util::TypeConstraints;
-
-with 'Norma::ORM::Mappable' => {
-	dbh => $dbh,
-	table_name => 'recipe_comments'
-};
-
-1;
-
-package main;
->>>>>>> 251bc2db3de714ce571130743f758811e51f7ecf
 
 my $recipe = Norma::ORM::Test::Recipe->new(
 	title => 'Eggs Benedict',
