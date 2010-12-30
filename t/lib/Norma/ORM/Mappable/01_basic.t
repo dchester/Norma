@@ -1,16 +1,21 @@
 use strict;
+
 use Test::More;
 use Data::Dumper;
 
-use Norma::ORM::Test::DB;
-my $db = Norma::ORM::Test::DB->new;
+our $db;
 
-$db->initialize;
+BEGIN {
+	use Norma::ORM::Test::DB;
+	$db = Norma::ORM::Test::DB->new;
+	$db->initialize;
+}
+
 my $dbh = $db->dbh;
 
-use Norma::ORM::Test::Recipe;
-
 # create a new recipe
+
+use Norma::ORM::Test::Recipe;
 
 my $recipe = Norma::ORM::Test::Recipe->new(
 	title => 'Eggs Benedict',
@@ -136,3 +141,4 @@ like($recipes->query, qr/where id > '0' and title like 'Eggs%' limit 0, 50/, "co
 done_testing;
 
 1;
+

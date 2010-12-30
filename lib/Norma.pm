@@ -5,7 +5,7 @@ use strict;
 
 =head1 NAME
 
-Norma - Light-weight web framework to run on HTML::Mason, DBI, and Moose
+Norma - easy, limited, Moose-based ORM for the unafraid
 
 =head1 VERSION
 
@@ -17,7 +17,7 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Norma consists of three optional components: an ORM, a URL dispatcher, and smart scaffolding with inheritance.
+Norma's goal is to provide an easy interface into your relational data.  
 
 =head1 AUTHOR
 
