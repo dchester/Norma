@@ -6,18 +6,7 @@ use Test::More;
 use Norma::DB;
 use Norma::ORM::Test::DB;
 
-if ( $ENV{NORMA_UNIT_TEST_DB_DRIVER} eq 'sqlite' ) {
-
-	my $dsn = "dbi:SQLite:dbname=/tmp/norma-unit-testing-$$";
-
-	my $db = Norma::DB->initialize(
-		dsn => $dsn
-	);
-
-	ok( $db->dbh->isa("DBI::db"), 'manual sqlite dsn gets us a DBI::db' );
-
-
-} else {
+if ( $ENV{NORMA_UNIT_TEST_DB_DRIVER} eq 'mysql' ) {
 
 	my $db = Norma::DB->initialize(
 		username => 'tester',
@@ -32,6 +21,12 @@ if ( $ENV{NORMA_UNIT_TEST_DB_DRIVER} eq 'sqlite' ) {
 	$db = Norma::DB->initialize( dbh => $dbh );
 	ok( $db->dbh->isa("DBI::db"), 'pre-made handle makes it through' );
 
+} else {
+
+	my $dsn = "dbi:SQLite:dbname=/tmp/norma-unit-testing-$$";
+
+	my $db = Norma::DB->initialize( dsn => $dsn );
+	ok( $db->dbh->isa("DBI::db"), 'manual sqlite dsn gets us a DBI::db' );
 }
 
 my $unit_test_db = Norma::ORM::Test::DB->new;
