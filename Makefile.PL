@@ -13,8 +13,8 @@ requires	'MooseX::Role::Parameterized';
 requires	'MooseX::Role::Parameterized';
 requires	'Lingua::EN::Inflect::Number';
 
-build_requires	'Test::More';
-
+test_requires	'Test::More';
+test_requires	'Test::Exception';
 test_requires	'DBD::SQLite';
 
 default_test_target includes => ['t/lib'];
