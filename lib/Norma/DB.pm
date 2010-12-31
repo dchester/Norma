@@ -34,10 +34,8 @@ sub initialize {
 		# default RaiseError to true
 		$attr = { RaiseError => 1, %{ $attr || {} } };
 
-		$dbh = DBI->connect( $dsn, $username, $password, $attr );
-
-		#use Data::Dumper;
-		#die Dumper $dbh;
+		my $connect_method = $args{no_connection_caching} ? 'connect' : 'connect_cached';
+		$dbh = DBI->$connect_method( $dsn, $username, $password, $attr );
 	}
 
 	my $driver_class_map = {
@@ -280,7 +278,7 @@ Norma::DB - Easy interface to fundamental data access and table definition opera
 
 =item initialize( dsn => $dsn, username => $username, password => $password )
 
-Set up an instance, given some connection criteria and authentication info.
+Set up an instance, given some connection criteria and authentication info.  Alternatively, pass in an existing database handle as "dbh" if you already have one.
 
 =item insert( table_name => $table_name, values => {...} )
 
