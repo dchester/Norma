@@ -17,7 +17,7 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Norma provides a "Mappable" role to compose into your Moose-based modules.  With the role composed, you now have access to read and write your relational data.
+Norma provides a "Mappable" role to compose into your Moose-based modules.  With the role composed, you have access to read and write your relational data.
 
 Schema management is left to you.  You create your tables on your own, and Norma will discover what you've done and adapt accordingly.
 
@@ -26,22 +26,20 @@ Schema management is left to you.  You create your tables on your own, and Norma
 Here's an example where we compose the role into a class to represent recipes.  The role takes a table name and a database handle at a minimum.
 
   # create a "recipes" table with an id, title, etc
-
   mysql> CREATE TABLE recipes (id int auto_increment, ...)
 
   # create a class to represent a recipe
-
   package MyApp::Recipe;
 
   use Moose;
   with 'Norma::ORM::Mappable' => {
       table_name => 'recipes',
-      dbh => MyApp::DB->new
+      dbh => $dbh
   };
   
 =head1 READING AND WRITING 
 
-Now we have access to CRUD operations on the table.  Here we insert a row with new() and then call save():
+Now we have access to CRUD operations on the table.  Here we insert a row with a call to save() after instantiating a new object: 
 
   my $recipe = MyApp::Recipe->new(
       title => "Scrambled Eggs",
@@ -67,7 +65,7 @@ Delete a row by calling delete() on an instantiated object
 
 To retrieve a set of objects, use collect():
 
-  my $recipes = MyApp::Recipe->collect();
+  my $recipes = MyApp::Recipe->collect;
 
 Now we have a Norma::ORM::Collection, which gives us access to instantiated recipe objects, and other metadata about the result set.
 
@@ -76,7 +74,7 @@ Now we have a Norma::ORM::Collection, which gives us access to instantiated reci
 
 See Norma::ORM::Collection for more about specifying criteria with joins and "where" conditions, etc.
 
-=head1 SUPPORTING THE "R" IN ORM
+=head1 RELATIONSHIPS
 
 When we compose the role we can optionally specify relationships.  This is up to us -- there's no magic to try and discover this.  
 
@@ -96,7 +94,7 @@ Assuming we have an "authors" table with an id, name, and email, and assuming we
       dbh => MyApp::DB->new,
       relationships => [
           {
-              name => 'author' # you choose this name
+              name => 'author'
               class => 'MyApp::Author',
               nature => 'belongs_to'
           }
