@@ -23,5 +23,12 @@ tests_recursive;
 
 auto_install;
 
+my $default_preop_cmd = q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"];
+my $sync_versions_cmd = q[pushd $(DISTVNAME) $(TO_INST_PM) && perl -pi -e 's/(package Norma::.+)/$$1\nour \$$VERSION = \"$(VERSION)\"\;/' $(TO_INST_PM) && popd];
+
+makemaker_args(
+	dist => { PREOP => "$default_preop_cmd; $sync_versions_cmd" }
+);
+
 WriteAll;
 
