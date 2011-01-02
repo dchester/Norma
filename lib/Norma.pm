@@ -17,8 +17,7 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Norma provides a "Mappable" role to compose into your Moose-based modules.  With the role composed, you have access to read and write your relational data.
-
+Norma provides a "Mappable" role to compose into your Moose-based modules.  When you compose the role into a class, you map that class to a table in the database.  You can also specify relationships.  With the role composed, columns become attributes, and you have methods available to read and write to that table.  
 Schema management is left to you.  You create your tables on your own, and Norma will discover what you've done and adapt accordingly.
 
 =head1 COMPOSING THE ROLE
@@ -26,7 +25,7 @@ Schema management is left to you.  You create your tables on your own, and Norma
 Here's an example where we compose the role into a class to represent recipes.  The role takes a table name and a database handle at a minimum.
 
   # create a "recipes" table with an id, title, etc
-  mysql> CREATE TABLE recipes (id int auto_increment, ...)
+  mysql> CREATE TABLE recipes (id int auto_increment, title ...)
 
   # create a class to represent a recipe
   package MyApp::Recipe;
@@ -63,7 +62,7 @@ Delete a row by calling delete() on an instantiated object
 
 =head1 QUERYING FOR COLLECTIONS 
 
-To retrieve a set of objects, use collect():
+To retrieve a set of objects, use collect() as a class method:
 
   my $recipes = MyApp::Recipe->collect;
 
@@ -116,7 +115,7 @@ David Chester, C<< <davidchester at gmx.net> >>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010 David Chester.
+Copyright (C) 2010-2011 David Chester
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published
