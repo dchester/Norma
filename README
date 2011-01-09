@@ -70,7 +70,7 @@ See Norma::ORM::Collection for more about specifying criteria with joins and
 
 RELATIONSHIPS
 
-When we compose the role we can optionally specify relationships.  This is up 
+When we compose the role we can also specify relationships.  This is up 
 to us -- there's no magic to try and discover this.  
 
 Assuming we have an "authors" table with an id, name, and email, and assuming 
@@ -108,13 +108,14 @@ relationships, we get back a Collection instead of an instantiated object.
 
 For more see documentation for Norma::ORM::Mappable and Norma::ORM::Collection.
 
-LICENSE AND COPYRIGHT
+AUTHOR
 
-Copyright (C) 2010-2011 David Chester
+David Chester <davidchester@gmx.net>
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+COPYRIGHT AND LICENSE
 
-See http://dev.perl.org/licenses/ for more information.
+This software is copyright (c) 2010-2011 by David Chester.
+
+This is free software; you can redistribute it and/or modify it under the same
+terms as the Perl 5 programming language system itself.
 

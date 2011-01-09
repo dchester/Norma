@@ -7,13 +7,9 @@ use strict;
 
 Norma - easy, limited, Moose-based ORM for the unafraid
 
-=head1 VERSION
-
-Version 0.01
-
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -75,7 +71,7 @@ See Norma::ORM::Collection for more about specifying criteria with joins and "wh
 
 =head1 RELATIONSHIPS
 
-When we compose the role we can optionally specify relationships.  This is up to us -- there's no magic to try and discover this.  
+When we compose the role we can also specify relationships.  This is up to us -- there's no magic to try and discover this.  
 
 Assuming we have an "authors" table with an id, name, and email, and assuming we have an author_id column in the "recipes" table, we can specify the relationship:
 
