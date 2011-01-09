@@ -30,5 +30,5 @@ makemaker_args(
 	dist => { PREOP => "$default_preop_cmd; $sync_versions_cmd" }
 );
 
-WriteAll;
+WriteAll( meta => 0 );
 
