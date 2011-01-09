@@ -107,21 +107,21 @@ With the relationship defined, now we can access the author through the recipe:
 
 This related data is loaded lazily, only when we ask for it.  For has_many relationships, we get back a Collection instead of an instantiated object.
 
-For more see documentation for Norma::ORM::Mappable and Norma::ORM::Collection.
+For more see L<Norma::ORM::Mappable> and L<Norma::ORM::Collection>.
+
+=head1 SEE ALSO
+
+L<Norma::ORM::Mappable>, L<Norma::ORM::Collection>
 
 =head1 AUTHOR
 
-David Chester, C<< <davidchester at gmx.net> >>
+David Chester <davidchester@gmx.net>
 
-=head1 LICENSE AND COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2010-2011 David Chester
+This software is copyright (c) 2010-2011 by David Chester.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
-
-See http://dev.perl.org/licenses/ for more information.
+This is free software; you can redistribute it and/or modify it under the same terms as the Perl 5 programming language system itself.
 
 =cut
 

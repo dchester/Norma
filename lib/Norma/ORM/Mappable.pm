@@ -377,21 +377,19 @@ Norma::ORM::Mappable - A Moose role to map database tables to objects
 
 =head1 ROLE PARAMETERS
 
-=over
-
-=item dbh => $dbh
+=head2 dbh => $dbh
 
 A database handle from DBI->connect
 
-=item table_name => $table_name
+=head2 table_name => $table_name
 
 The name of the table which should map to this object
 
-=item key_field_names => [$primary_key_name, ...] (optional)
+=head2 key_field_names => [$primary_key_name, ...] (optional)
 
 A list of column names that should be seen as valid for unique lookups
 
-=item relationships => [ { name => $name, class => $class, nature => $nature } ] (optional)
+=head2 relationships => [ { name => $name, class => $class, nature => $nature } ] (optional)
 
 An arrayref of hashrefs, each hashref specifying a name, class, and nature.  The name will be used to create an accessor method on this object.  The class should be the class name of another object with Norma::ORM::Mappable role.  The nature is one of belongs_to, has_many, or has_one.  You may also specify foreign_key and foreign_primary_key as your naming scheme requires.  For example, our recipe might have tags and comments:
   
@@ -419,41 +417,39 @@ An arrayref of hashrefs, each hashref specifying a name, class, and nature.  The
 
 Objects and collections loaded through these relationships will be loaded lazily.
 
-=back
-
 =head1 METHODS PROVIDED BY THIS ROLE
 
-=over
-
-=item new(...)
+=head2 new(...)
 
 Instantiate an object in preparation for inserting a new row with save() or merge().  Use load() to instatiate an object from an existing row in the database.
 
-=item load(id => $primary_key_id)
+=head2 load(id => $primary_key_id)
 
 Class method to instantiate an object from an existing row in the database.  
 
-=item save
+=head2 save
 
 Write the object to the database, either through an insert or an updated, depending on whether the object was instantiated via new() or load().
 
-=item merge
+=head2 merge
 
 Write to the database if the row passes any unique constraints, otherwise instantiate from the already-existing row.
 
-=item validate
+=head2 validate
 
 Perform subtype type checking to see that values pass attribute-level constraints.
 
-=item delete
+=head2 delete
 
 Delete from the database the row that corresponds to this object.
 
-=item collect(where => { $column => $value }, ...)
+=head2 collect(where => { $column => $value }, ...)
 
-Class method to return a collection of objects.  See Norma::ORM::Collection for details.
+Class method to return a collection of objects.  See L<Norma::ORM::Collection> for details.
 
-=back
+=head1 SEE ALSO
+
+L<Norma>, L<Norma::ORM::Collection>
 
 =head1 AUTHOR
 
@@ -461,6 +457,6 @@ David Chester <davidchester@gmx.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by David Chester.
+This software is copyright (c) 2010-2011 by David Chester.
 
 This is free software; you can redistribute it and/or modify it under the same terms as the Perl 5 programming language system itself.

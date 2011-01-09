@@ -94,7 +94,7 @@ __END__
 
 =head1 NAME
 
-Norma::ORM::Collection - Queries and results with metadata from Norma::ORM::Mappable classes
+Norma::ORM::Collection - Queries and results with metadata from classes consuming the L<Norma::ORM::Mappable> role
 
 =head1 SYNOPSIS
 
@@ -109,15 +109,9 @@ Norma::ORM::Collection - Queries and results with metadata from Norma::ORM::Mapp
 
 =head1 METHODS
 
-=over
-
-=item new(where => {...} order => $column_name, ...)
+=head2 new(where => {...} order => $column_name, ...)
 
 Queries the database and returns a collection which contains an array of instantiated objects, along with other metadata.  We'll take the following parameters:
-
-=back
-
-=head2 parameters
 
 =over
 
@@ -174,22 +168,32 @@ Return items starting at this offset
 
 =head1 METHODS
 
-=over
-
-=item items
+=head2 items
 
 Array of objects where each one is an instance of the given $class
 
-=item total_count
+=head2 total_count
 
 The number of rows that matched this query
 
-=item query
+=head2 query
 
 The actual SQL query that was run
 
-=item class
+=head2 class
 
 The name of the class of the objects returned via items
 
-=back
+=head1 SEE ALSO
+
+L<Norma>, L<Norma::ORM::Mappable>
+
+=head1 AUTHOR
+
+David Chester <davidchester@gmx.net>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010-2011 by David Chester.
+
+This is free software; you can redistribute it and/or modify it under the same terms as the Perl 5 programming language system itself.
