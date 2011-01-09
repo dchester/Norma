@@ -274,45 +274,41 @@ Norma::DB - Easy interface to fundamental data access and table definition opera
 
 =head1 METHODS
 
-=over
-
-=item initialize( dsn => $dsn, username => $username, password => $password )
+=head2 initialize( dsn => $dsn, username => $username, password => $password )
 
 Set up an instance, given some connection criteria and authentication info.  Alternatively, pass in an existing database handle as "dbh" if you already have one.
 
-=item insert( table_name => $table_name, values => {...} )
+=head2 insert( table_name => $table_name, values => {...} )
 
 Insert a row, given a table name and values for the row.  Values will be escaped using DBI::quote except for subref values.  Values that are references to subs will be executed, and their return value subtituted in for that column, useful for calling database functions (e.g. date_created => sub { 'NOW()' }).  Returns the primary id for the inserted row.
 
-=item merge( table_name => $table_name, values => {...} )
+=head2 merge( table_name => $table_name, values => {...} )
 
 Similar to insert, but only insert the row if it's not already there (i.e., if it doesn't break a unique constraint).  Values are processed as they are in insert().  Return criteria to select the row, whether it was inserted or already there.  Implemented nicely in a single query for MySQL, less elegantly for SQLite.
 
-=item update( table_name => $table_name, values => {...}, where => $where_condition )
+=head2 update( table_name => $table_name, values => {...}, where => $where_condition )
 
 Update rows in a table, given values to update, and matching criteria.  Values are processed as they are in insert() Returns the number of rows affected.
 
-=item delete( table_name => $table_name, where => $where_condition )
+=head2 delete( table_name => $table_name, where => $where_condition )
 
 Delete rows in a table, given criteria.  Returns number of rows affected.
 
-=item select( table_name => $table_name, where => $where_condition )
+=head2 select( table_name => $table_name, where => $where_condition )
 
 Select rows from a table, given criteria.
 
-=item get_table_definition( table_name => $table_name )
+=head2 get_table_definition( table_name => $table_name )
 
 Get a table definition, given a table name
 
-=item get_table_primary_key_field_names( table_name => $table_name )
+=head2 get_table_primary_key_field_names( table_name => $table_name )
 
 Get primary key field names, given a table name.
 
-=item get_table_key_field_names( table_name => $table_name ) 
+=head2 get_table_key_field_names( table_name => $table_name ) 
 
 Get names of columns that have single-column unique/primary indexes, given a table name
-
-=back
 
 =head1 Database-Specific Drivers
 
@@ -327,7 +323,7 @@ David Chester <davidchester@gmx.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by David Chester.
+This software is copyright (c) 2010-2011 by David Chester.
 
 This is free software; you can redistribute it and/or modify it under the same terms as the Perl 5 programming language system itself.
 
